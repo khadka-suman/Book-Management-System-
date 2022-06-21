@@ -1,9 +1,34 @@
-﻿namespace Book.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WebApplicationBookManagementSystem.Models
 {
     public class Books
     {
-        public string Name { get; set; } = String.Empty;
-        public string Publisher { get; set; } = string.Empty;
-        public DateTime PublishDate { get; set; }
+        //[key]
+        public int BookId { get; set; }
+
+        [Required]
+        [Display(Name ="Book Name")]
+        [StringLength(20, MinimumLength =2)]
+        public string Bookname { get; set; }
+
+
+        [Required]
+        [StringLength(20, MinimumLength =4)]
+        [Display(Name = "Book Details")]
+        public string Bookdetails { get; set; }
+
+        [Required]
+        [StringLength(20, MinimumLength = 5)]
+        [Display(Name = "Book Genre")]
+        public string Bookgenre;
+
+
+       // public int UId { get; set; }
+       // [FoerignKey("UId")]
+       // public virtual Books Books { get; set; }
+
+
     }
 }
