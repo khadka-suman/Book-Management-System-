@@ -1,10 +1,10 @@
-﻿using Book.Areas.Identity.Data;
-using Book.Models;
+﻿using Book.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Book.Controllers;
 
-namespace Book.Areas.Identity.Data;
+namespace WebApplicationBook.Areas.Identity.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {

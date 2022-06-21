@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApplicationBookManagementSystem.Models
+namespace Book.Models
 {
     public class Books
     {
