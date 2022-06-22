@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Book.Models;
 
 
-namespace WebApplicationBook.Areas.Identity.Data;
+namespace Book.Areas.Identity.Data;
 
 // Add profile data for application users by adding properties to the ApplicationUser class
 public class ApplicationUser : IdentityUser
@@ -17,27 +17,22 @@ public class ApplicationUser : IdentityUser
     [Required]
     [Display(Name = "First Name")]
     [StringLength(20, MinimumLength = 2)]
-    public string firstname { get; set; }
+    public string? firstname { get; set; }
 
     [Required]
     [StringLength(20, MinimumLength = 3)]
     [Display(Name = "Last Name")]
-    public string lastname { get; set; }
+    public string? lastname { get; set; }
 
     [Required]
     [Display(Name = "Address")]
-    public string address { get; set; }
+    public string? address { get; set; }
 
     [Required]
     [Display(Name = "Age")]
     [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
     public int age { get; set; }
 
-    [NotMapped]
-    public string RoleId { get; set; }
-
-    [NotMapped]
-    public string Role { get; set; }
-
+    
 }
 

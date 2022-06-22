@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using IEmailSender = Microsoft.AspNetCore.Identity.UI.Services.IEmailSender;
 
 namespace Book.Areas.Identity.Pages.Account
 {
@@ -89,6 +90,25 @@ namespace Book.Areas.Identity.Pages.Account
             [DataType(DataType.Password)]
             [Display(Name = "Password")]
             public string Password { get; set; }
+
+            [Required]
+            [Display(Name = "First Name")]
+            [StringLength(20, MinimumLength = 2)]
+            public string? firstname { get; set; }
+
+            [Required]
+            [StringLength(20, MinimumLength = 3)]
+            [Display(Name = "Last Name")]
+            public string? lastname { get; set; }
+
+            [Required]
+            [Display(Name = "Address")]
+            public string? address { get; set; }
+
+            [Required]
+            [Display(Name = "Age")]
+            [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
+            public int age { get; set; }
 
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
