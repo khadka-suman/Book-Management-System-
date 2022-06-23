@@ -33,14 +33,7 @@ C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll

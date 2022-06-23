@@ -14,7 +14,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
     }
         public DbSet<Books> Books { get; set; }
-    public DbSet<Category> Categories { get; set; }
+    //public DbSet<Category> Categories { get; set; }
 
 
 
