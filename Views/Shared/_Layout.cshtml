@@ -1,5 +1,8 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Book.Areas.Identity.Data
+
+@inject UserManager<ApplicationUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +30,14 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (SignInManager.IsSignedIn(User))
+                        {
+                            
+                  
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Books" asp-action="Index">Book</a>
+                        </li>
+                         }
                     </ul>
                 </div>
                 <partial name = "_LoginPartial" />
