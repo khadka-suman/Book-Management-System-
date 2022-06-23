@@ -24,6 +24,8 @@ namespace Book.Models
         [Display(Name = "Book Genre")]
         public string? Bookgenre;
 
-        
+
+
+       
     }
 }
