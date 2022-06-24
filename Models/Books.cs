@@ -22,7 +22,9 @@ namespace Book.Models
         [Required]
         [StringLength(20, MinimumLength = 5)]
         [Display(Name = "Book Genre")]
-        public string? Bookgenre;
+        public string? Bookgenre { get; set; }
+
+    
 
 
 
