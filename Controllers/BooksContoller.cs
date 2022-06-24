@@ -9,11 +9,11 @@ using Book.Areas.Identity.Data;
 
 namespace Book.Controllers
 {
-    public class BooksContoller : Controller
+    public class BooksController : Controller
     {
         private readonly ApplicationDbContext _db;
         
-        public BooksContoller(ApplicationDbContext db)
+        public BooksController(ApplicationDbContext db)
             
 
        
@@ -30,15 +30,15 @@ namespace Book.Controllers
         }
 
         //GET
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
+       
         public IActionResult Create()
         {
             return View();
         }
         //POST
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        
 
         public IActionResult Create(Books obj)
         {
