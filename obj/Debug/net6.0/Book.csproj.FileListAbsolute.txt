@@ -282,3 +282,7 @@ C:\Users\97798\source\repos\Book\bin\Debug\net6.0\MySql.Data.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Ubiety.Dns.Core.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\ZstdNet.dll
 C:\Users\97798\source\repos\Book\bin\Debug\net6.0\MySql.EntityFrameworkCore.dll
+C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\97798\source\repos\Book\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

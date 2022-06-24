@@ -1,8 +1,8 @@
 ﻿using Book.Models;
-using Microsoft.AspNetCore.Identity;
+
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Book.Controllers;
+
 
 namespace Book.Areas.Identity.Data;
 
