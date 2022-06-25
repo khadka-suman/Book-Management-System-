@@ -5,23 +5,25 @@ namespace Book.Models
 {
     public class Books
     {
+        [ScaffoldColumn(false)]
         [Key]
-        public int BookId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]   
+        public int? BooksId { get; set; }
+
 
         [Required]
         [Display(Name ="Book Name")]
-        [StringLength(20, MinimumLength =2)]
+        
         public string? Bookname { get; set; }
 
 
         [Required]
-        [StringLength(20, MinimumLength =4)]
         [Display(Name = "Book Details")]
         public string? Bookdetails { get; set; }
 
         [Required]
-        [StringLength(20, MinimumLength = 5)]
-        [Display(Name = "Book Genre")]
+        
+        [Display(Name = "BookGenre")]
         public string? Bookgenre { get; set; }
 
     
