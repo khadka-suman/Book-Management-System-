@@ -28,6 +28,10 @@
                 <span asp-validation-for="Bookgenre" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="CategoryId" class="control-label"></label>
+                <select asp-for="CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
@@ -35,7 +39,7 @@
 </div>
 
 <div>
-    <a asp-controller="Books" asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

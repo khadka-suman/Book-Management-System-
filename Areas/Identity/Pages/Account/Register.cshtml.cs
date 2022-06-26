@@ -81,6 +81,33 @@ namespace Book.Areas.Identity.Pages.Account
             [Display(Name = "Email")]
             public string Email { get; set; }
 
+
+            [PersonalData]
+            [Required]
+            [Display(Name = "First Name")]
+            [StringLength(20, MinimumLength = 2)]
+            public string firstname { get; set; }
+
+            [Required]
+            [StringLength(20, MinimumLength = 3)]
+            [Display(Name = "Last Name")]
+            public string lastname { get; set; }
+
+
+/*            [Required]
+            [Display(Name = "User Name")]*/
+            public string Username => firstname + " " + lastname;
+
+            [Required]
+            [Display(Name = "Address")]
+            public string address { get; set; }
+
+            [Required]
+            [Display(Name = "Age")]
+            [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
+            public int age { get; set; }
+
+
             /// <summary>
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
@@ -119,6 +146,10 @@ namespace Book.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
+                user.firstname = Input.firstname;
+                user.lastname = Input.lastname;
+                user.address = Input.address;
+                user.age = Input.age;
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);

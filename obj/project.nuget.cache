@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Wm3X6Ql6MobbymLc44d6IWLlYeyE/kUgCxy7ZwAAn+tkWWTK9jYglrgzd/tcXFVqZCAzfFO/ocxO+bsKlxSpjA==",
+  "dgSpecHash": "87mQi7nFUwnBqQgJ5ezZvqgH2dHsqswLmiUmnoVrauO+n9D7YL1rGwgxNTH1gThUtR+1/UUiMf6sWQ1iOwX65w==",
   "success": true,
   "projectFilePath": "C:\\Users\\97798\\source\\repos\\Book\\Book.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,7 @@
     "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\6.0.6\\microsoft.aspnetcore.identity.ui.6.0.6.nupkg.sha512",
     "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\2.2.0\\microsoft.aspnetcore.jsonpatch.2.2.0.nupkg.sha512",
     "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.mvc.abstractions\\2.2.0\\microsoft.aspnetcore.mvc.abstractions.2.2.0.nupkg.sha512",
-    "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.mvc.core\\2.2.0\\microsoft.aspnetcore.mvc.core.2.2.0.nupkg.sha512",
+    "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.mvc.core\\2.2.5\\microsoft.aspnetcore.mvc.core.2.2.5.nupkg.sha512",
     "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.mvc.dataannotations\\2.2.0\\microsoft.aspnetcore.mvc.dataannotations.2.2.0.nupkg.sha512",
     "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.mvc.formatters.json\\2.2.0\\microsoft.aspnetcore.mvc.formatters.json.2.2.0.nupkg.sha512",
     "C:\\Users\\97798\\.nuget\\packages\\microsoft.aspnetcore.mvc.viewfeatures\\2.2.0\\microsoft.aspnetcore.mvc.viewfeatures.2.2.0.nupkg.sha512",

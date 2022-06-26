@@ -13,7 +13,30 @@ namespace Book.Areas.Identity.Data;
 // Add profile data for application users by adding properties to the ApplicationUser class
 public class ApplicationUser : IdentityUser
 {
-    
-    
+    [PersonalData]
+    [Required]
+    [Display(Name = "First Name")]
+    [StringLength(20, MinimumLength = 2)]
+    public string firstname { get; set; }
+
+    [Required]
+    [StringLength(20, MinimumLength = 3)]
+    [Display(Name = "Last Name")]
+    public string lastname { get; set; }
+
+    [Required]
+    [Display(Name = "User Name")]
+    public string Username => firstname + " " + lastname;
+
+    [Required]
+    [Display(Name = "Address")]
+    public string address { get; set; }
+
+    [Required]
+    [Display(Name = "Age")]
+    [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
+    public int age { get; set; }
+
+
 }
 

@@ -10,90 +10,91 @@ using Book.Models;
 
 namespace Book.Controllers
 {
-    public class BooksController : Controller
+    public class CategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public BooksController(ApplicationDbContext context)
+        public CategoriesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Books
+        // GET: Categories
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Books.Include(b => b.Category);
-            return View(await applicationDbContext.ToListAsync());
+
+            return _context.Category != null ? 
+                
+
+                          View(await _context.Category.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Category'  is null.");
         }
 
-        // GET: Books/Details/5
+        // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Books == null)
+            if (id == null || _context.Category == null)
             {
                 return NotFound();
             }
 
-            var books = await _context.Books
-                .Include(b => b.Category)
-                .FirstOrDefaultAsync(m => m.BooksId == id);
-            if (books == null)
+            var category = await _context.Category
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(books);
+            return View(category);
         }
 
-        // GET: Books/Create
+        // GET: Categories/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
             return View();
         }
 
-        // POST: Books/Create
+        // POST: Categories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,CategoryId")] Books books)
+        public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
+        
         {
             if (ModelState.IsValid)
             {
-                _context.Add(books);
+                _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", books.CategoryId);
-            return View(books);
+            return View(category);
         }
 
-        // GET: Books/Edit/5
+        // GET: Categories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Books == null)
+            if (id == null || _context.Category == null)
             {
                 return NotFound();
             }
 
-            var books = await _context.Books.FindAsync(id);
-            if (books == null)
+            var category = await _context.Category.FindAsync(id);
+            if (category == null)
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", books.CategoryId);
-            return View(books);
+            return View(category);
         }
 
-        // POST: Books/Edit/5
+        // POST: Categories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,CategoryId")] Books books)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name")] Category category)
         {
-            if (id != books.BooksId)
+            if (id != category.Id)
             {
                 return NotFound();
             }
@@ -102,12 +103,12 @@ namespace Book.Controllers
             {
                 try
                 {
-                    _context.Update(books);
+                    _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BooksExists(books.BooksId))
+                    if (!CategoryExists(category.Id))
                     {
                         return NotFound();
                     }
@@ -118,51 +119,49 @@ namespace Book.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", books.CategoryId);
-            return View(books);
+            return View(category);
         }
 
-        // GET: Books/Delete/5
+        // GET: Categories/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Books == null)
+            if (id == null || _context.Category == null)
             {
                 return NotFound();
             }
 
-            var books = await _context.Books
-                .Include(b => b.Category)
-                .FirstOrDefaultAsync(m => m.BooksId == id);
-            if (books == null)
+            var category = await _context.Category
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (category == null)
             {
                 return NotFound();
             }
 
-            return View(books);
+            return View(category);
         }
 
-        // POST: Books/Delete/5
+        // POST: Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Books == null)
+            if (_context.Category == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Books'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Category'  is null.");
             }
-            var books = await _context.Books.FindAsync(id);
-            if (books != null)
+            var category = await _context.Category.FindAsync(id);
+            if (category != null)
             {
-                _context.Books.Remove(books);
+                _context.Category.Remove(category);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BooksExists(int id)
+        private bool CategoryExists(int id)
         {
-          return (_context.Books?.Any(e => e.BooksId == id)).GetValueOrDefault();
+          return (_context.Category?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

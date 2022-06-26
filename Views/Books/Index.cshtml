@@ -7,7 +7,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-controller="Books" asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -20,6 +20,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Bookgenre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
             </th>
             <th></th>
         </tr>
@@ -37,9 +40,12 @@
                 @Html.DisplayFor(modelItem => item.Bookgenre)
             </td>
             <td>
-                <a asp-controller="Books" asp-action="Edit" asp-route-id="@item.BooksId">Edit</a> |
-                <a asp-controller="Books" asp-action="Details" asp-route-id="@item.BooksId">Details</a> |
-                <a asp-controller="Books" asp-action="Delete" asp-route-id="@item.BooksId">Delete</a>
+                @Html.DisplayFor(modelItem => item.Category.Id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BooksId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BooksId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BooksId">Delete</a>
             </td>
         </tr>
 }

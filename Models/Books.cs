@@ -1,14 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Book.Areas.Identity.Data;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Book.Models
 {
     public class Books
     {
-        [ScaffoldColumn(false)]
+       // [ScaffoldColumn(false)]
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]   
-        public int? BooksId { get; set; }
+       // [DatabaseGenerated(DatabaseGeneratedOption.Identity)]   
+        public int BooksId { get; set; }
 
 
         [Required]
@@ -26,10 +27,9 @@ namespace Book.Models
         [Display(Name = "BookGenre")]
         public string? Bookgenre { get; set; }
 
-    
 
-
-
-       
+        [ForeignKey("Category")]
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
     }
 }
