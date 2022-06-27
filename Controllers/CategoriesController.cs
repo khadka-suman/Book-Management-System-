@@ -61,13 +61,13 @@ namespace Book.Controllers
         public async Task<IActionResult> Create([Bind("Id,Name")] Category category)
         
         {
-            if (ModelState.IsValid)
-            {
+           //if (ModelState.IsValid)
+           // { 
                 _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(category);
+         // }
+           // return View(category);
         }
 
         // GET:Edit

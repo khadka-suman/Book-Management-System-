@@ -10,7 +10,6 @@ using Book.Models;
 
 namespace Book.Areas.Identity.Data;
 
-// Add profile data for application users by adding properties to the ApplicationUser class
 public class ApplicationUser : IdentityUser
 {
     [PersonalData]
@@ -37,6 +36,10 @@ public class ApplicationUser : IdentityUser
     [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
     public int age { get; set; }
 
+    [NotMapped]
+    public string RoleId { get; set;}
 
+    [NotMapped]
+    public string Role { get; set; }
 }
 

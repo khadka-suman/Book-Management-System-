@@ -31,5 +31,8 @@ namespace Book.Models
         [ForeignKey("Category")]
         public int Id { get; set; }
         public virtual Category Category { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual ApplicationUser User { get; set; }
     }
 }
