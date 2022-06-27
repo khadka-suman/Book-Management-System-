@@ -124,12 +124,12 @@ namespace Book.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryId")
+                    b.Property<int>("Id")
                         .HasColumnType("int");
 
                     b.HasKey("BooksId");
 
-                    b.HasIndex("CategoryId");
+                    b.HasIndex("Id");
 
                     b.ToTable("Books");
                 });
@@ -297,7 +297,7 @@ namespace Book.Migrations
                 {
                     b.HasOne("Book.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

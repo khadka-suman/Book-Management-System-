@@ -29,7 +29,7 @@ namespace Book.Models
 
 
         [ForeignKey("Category")]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
         public virtual Category Category { get; set; }
     }
 }

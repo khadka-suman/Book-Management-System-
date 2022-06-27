@@ -46,18 +46,17 @@ namespace Book.Controllers
         }
 
         // GET: Books/Create
+        [HttpGet]
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id");
             return View();
         }
 
         // POST: Books/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,CategoryId")] Books books)
+        public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id")] Books books)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +64,7 @@ namespace Book.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", books.CategoryId);
+            ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
             return View(books);
         }
 
@@ -82,7 +81,7 @@ namespace Book.Controllers
             {
                 return NotFound();
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", books.CategoryId);
+            ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
             return View(books);
         }
 
@@ -91,7 +90,7 @@ namespace Book.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,CategoryId")] Books books)
+        public async Task<IActionResult> Edit(int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id")] Books books)
         {
             if (id != books.BooksId)
             {
@@ -118,7 +117,7 @@ namespace Book.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "Id", "Id", books.CategoryId);
+            ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
             return View(books);
         }
 
