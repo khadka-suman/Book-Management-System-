@@ -19,14 +19,14 @@ namespace Book.Controllers
             _context = context;
         }
 
-        // GET: Books
+       
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Books.Include(b => b.Category);
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Books/Details/5
+        // GET:Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Books == null)
@@ -45,7 +45,7 @@ namespace Book.Controllers
             return View(books);
         }
 
-        // GET: Books/Create
+        // GET:Create
         [HttpGet]
         public IActionResult Create()
         {
@@ -53,7 +53,7 @@ namespace Book.Controllers
             return View();
         }
 
-        // POST: Books/Create
+        // POST:Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id")] Books books)
@@ -68,7 +68,8 @@ namespace Book.Controllers
             return View(books);
         }
 
-        // GET: Books/Edit/5
+        // GET:Edit
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Books == null)
@@ -85,9 +86,7 @@ namespace Book.Controllers
             return View(books);
         }
 
-        // POST: Books/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST:Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id")] Books books)
@@ -121,7 +120,8 @@ namespace Book.Controllers
             return View(books);
         }
 
-        // GET: Books/Delete/5
+        // GET:Delete
+        [HttpGet]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Books == null)
@@ -140,7 +140,7 @@ namespace Book.Controllers
             return View(books);
         }
 
-        // POST: Books/Delete/5
+        // POST:Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
