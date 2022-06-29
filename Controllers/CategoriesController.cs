@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Book.Areas.Identity.Data;
 using Book.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Book.Controllers
 {
@@ -19,7 +20,9 @@ namespace Book.Controllers
             _context = context;
         }
 
-       
+
+
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Index()
         {
 

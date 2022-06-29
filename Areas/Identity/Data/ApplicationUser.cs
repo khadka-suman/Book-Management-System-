@@ -23,9 +23,9 @@ public class ApplicationUser : IdentityUser
     [Display(Name = "Last Name")]
     public string lastname { get; set; }
 
-    [Required]
+   /* [Required]
     [Display(Name = "User Name")]
-    public string Username => firstname + " " + lastname;
+    public string Username => firstname + " " + lastname;*/
 
     [Required]
     [Display(Name = "Address")]
@@ -35,6 +35,9 @@ public class ApplicationUser : IdentityUser
     [Display(Name = "Age")]
     [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
     public int age { get; set; }
+
+  /* [NotMapped]
+    public string User { get; set; }*/
 
     [NotMapped]
     public string RoleId { get; set;}

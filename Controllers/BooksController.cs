@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Book.Controllers
 {
+  
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -19,22 +20,18 @@ namespace Book.Controllers
             _userManager = userManager;
         }
 
-        [Authorize(Roles ="User,Admin")]
-       /* public IActionResult Index()
-        {
-            IEnumerable<Books> objBooksList = _context.Books.ToList();
-        }*/
+        [Authorize(Roles = "User,Admin")]
+        
         public async Task<IActionResult> Index()
         {
-            /*IEnumerable<Books> objBooksList = _context.Books.ToList();
-            return View(objBooksList);*/
+          
 
             var applicationDbContext = _context.Books.Include(b => b.Category);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET:Details
-        [Authorize(Roles = "Admin,Developer,User")]
+       [Authorize(Roles = "Admin,Developer,User")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Books == null)
@@ -55,32 +52,37 @@ namespace Book.Controllers
 
         // GET:Create
         [HttpGet]
+       [Authorize(Roles ="User, Admin")]
         public IActionResult Create()
         {
             ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id");
+            ViewData["Name"] = new SelectList(_context.Categories, "Name", "Name");
             return View();
         }
 
         // POST:Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id")] Books books, Books obj)
+        [Authorize(Roles = "User, Admin")]
+
+        public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id,Name")] Books books)
         {
             var userid = _userManager.GetUserId(HttpContext.User);
             ApplicationUser user = await _userManager.FindByNameAsync(userid);
-            obj.User = user;
+           /* books.User = user;
             var FirstName = user.firstname;
-            var LastName = user.lastname;
-           // obj.CreatedBy = user.firstname + " " + user.lastname;
+            var LastName = user.lastname;*/
+            //books.CreatedBy = user.firstname + " " + user.lastname;
 
 
-           // if (ModelState.IsValid)
-           // {
-                _context.Add(books);
+            /* if (ModelState.IsValid)
+              {*/
+            _context.Add(books);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-           // }
+           /* }*/
             ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
+            ViewData["Name"] = new SelectList(_context.Categories, "Name", "Name", books.Id);
             return View(books);
         }
         
@@ -100,6 +102,7 @@ namespace Book.Controllers
                 return NotFound();
             }
             ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
+            ViewData["Name"] = new SelectList(_context.Categories, "Name", "Name", books.Id);
             return View(books);
         }
 
@@ -107,7 +110,7 @@ namespace Book.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Developer")]
-        public async Task<IActionResult> Edit(int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id")] Books books, Books obj)
+        public async Task<IActionResult> Edit(int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Name")] Books books)
         {
             /* if (id != books.BooksId)
              {
@@ -120,7 +123,7 @@ namespace Book.Controllers
                  {*/
             var userid = _userManager.GetUserId(HttpContext.User);
             ApplicationUser user = await _userManager.FindByIdAsync(userid);
-            obj.User = user;
+            books.User = user;
             var FirstName = user.firstname;
             var LastName = user.lastname;
            // obj.ModifiedBy = user.firstname + " " + user.lastname;
@@ -138,9 +141,10 @@ namespace Book.Controllers
                         throw;
                     }*/
                /* }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }*/
-            ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
+            ViewData["Id"] = new SelectList(_context.Categories, "Id","Id", books.Id);
+            ViewData["Name"] = new SelectList(_context.Categories,"Name", "Name", books.Id);
             return View(books);
         }
 
@@ -185,9 +189,24 @@ namespace Book.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+       /* [HttpGet]
+        public async Task<IActionResult> Validate(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            var ticketFromDb = await _context.Books.FindAsync(id);
+
+            if (ticketFromDb == null)
+            {
+                return NotFound();
+            }
+            return View(ticketFromDb);
+        }
         private bool BooksExists(int id)
         {
           return (_context.Books?.Any(e => e.BooksId == id)).GetValueOrDefault();
-        }
+        }*/
     }
 }
