@@ -69,9 +69,9 @@ namespace Book.Controllers
         {
             var userid = _userManager.GetUserId(HttpContext.User);
             ApplicationUser user = await _userManager.FindByNameAsync(userid);
-           /* books.User = user;
+            books.User = user;
             var FirstName = user.firstname;
-            var LastName = user.lastname;*/
+            var LastName = user.lastname;
             //books.CreatedBy = user.firstname + " " + user.lastname;
 
 
@@ -79,7 +79,7 @@ namespace Book.Controllers
               {*/
             _context.Add(books);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
            /* }*/
             ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
             ViewData["Name"] = new SelectList(_context.Categories, "Name", "Name", books.Id);
@@ -110,7 +110,7 @@ namespace Book.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Developer")]
-        public async Task<IActionResult> Edit(int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Name")] Books books)
+        public async Task<IActionResult> Edit (int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Name")] Books books)
         {
             /* if (id != books.BooksId)
              {

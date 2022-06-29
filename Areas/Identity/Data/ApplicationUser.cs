@@ -36,8 +36,7 @@ public class ApplicationUser : IdentityUser
     [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
     public int age { get; set; }
 
-  /* [NotMapped]
-    public string User { get; set; }*/
+    
 
     [NotMapped]
     public string RoleId { get; set;}
