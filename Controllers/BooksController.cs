@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Book.Controllers
 {
-  
+   
     public class BooksController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -68,7 +68,7 @@ namespace Book.Controllers
         public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id,Name")] Books books)
         {
             var userid = _userManager.GetUserId(HttpContext.User);
-            ApplicationUser user = await _userManager.FindByNameAsync(userid);
+            ApplicationUser user = await _userManager.FindByIdAsync(userid);
             books.User = user;
             var FirstName = user.firstname;
             var LastName = user.lastname;
@@ -110,7 +110,7 @@ namespace Book.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin,Developer")]
-        public async Task<IActionResult> Edit (int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Name")] Books books)
+        public async Task<IActionResult> Edit (int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id, Name")] Books books)
         {
             /* if (id != books.BooksId)
              {
@@ -145,7 +145,7 @@ namespace Book.Controllers
             }*/
             ViewData["Id"] = new SelectList(_context.Categories, "Id","Id", books.Id);
             ViewData["Name"] = new SelectList(_context.Categories,"Name", "Name", books.Id);
-            return View(books);
+            return RedirectToAction("Index");
         }
 
         // GET:Delete
@@ -188,25 +188,5 @@ namespace Book.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
-       /* [HttpGet]
-        public async Task<IActionResult> Validate(int? id)
-        {
-            if (id == null || id == 0)
-            {
-                return NotFound();
-            }
-            var ticketFromDb = await _context.Books.FindAsync(id);
-
-            if (ticketFromDb == null)
-            {
-                return NotFound();
-            }
-            return View(ticketFromDb);
-        }
-        private bool BooksExists(int id)
-        {
-          return (_context.Books?.Any(e => e.BooksId == id)).GetValueOrDefault();
-        }*/
     }
 }
