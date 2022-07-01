@@ -65,25 +65,18 @@ namespace Book.Controllers
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "User, Admin")]
 
-        public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id,Name")] Books books)
+        public async Task<IActionResult> Create([Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id, Name")] Books books)
         {
             var userid = _userManager.GetUserId(HttpContext.User);
             ApplicationUser user = await _userManager.FindByIdAsync(userid);
             books.User = user;
             var FirstName = user.firstname;
             var LastName = user.lastname;
-            //books.CreatedBy = user.firstname + " " + user.lastname;
-
-
-            /* if (ModelState.IsValid)
-              {*/
             _context.Add(books);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
-           /* }*/
             ViewData["Id"] = new SelectList(_context.Categories, "Id", "Id", books.Id);
             ViewData["Name"] = new SelectList(_context.Categories, "Name", "Name", books.Id);
-            return View(books);
         }
         
         // GET:Edit
@@ -112,37 +105,22 @@ namespace Book.Controllers
         [Authorize(Roles = "Admin,Developer")]
         public async Task<IActionResult> Edit (int id, [Bind("BooksId,Bookname,Bookdetails,Bookgenre,Id, Name")] Books books)
         {
-            /* if (id != books.BooksId)
-             {
-                 return NotFound();
-             }
-            
-             if (ModelState.IsValid)
-             {
-                 try
-                 {*/
+            if (id != books.BooksId)
+            {
+                return NotFound();
+            }
+
+          
             var userid = _userManager.GetUserId(HttpContext.User);
             ApplicationUser user = await _userManager.FindByIdAsync(userid);
             books.User = user;
             var FirstName = user.firstname;
             var LastName = user.lastname;
-           // obj.ModifiedBy = user.firstname + " " + user.lastname;
+
+            //
                     _context.Update(books);
                     await _context.SaveChangesAsync();
-               /* }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!BooksExists(books.BooksId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }*/
-               /* }
-                return RedirectToAction("Index");
-            }*/
+               
             ViewData["Id"] = new SelectList(_context.Categories, "Id","Id", books.Id);
             ViewData["Name"] = new SelectList(_context.Categories,"Name", "Name", books.Id);
             return RedirectToAction("Index");

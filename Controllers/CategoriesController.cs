@@ -99,11 +99,11 @@ namespace Book.Controllers
                 return NotFound();
             }
 
-            /*  if (ModelState.IsValid)
-              {
-                  try
-                  {*/
-            _context.Update(category);
+           /* if (ModelState.IsValid)
+            {
+                try
+                {*/
+                    _context.Update(category);
                     await _context.SaveChangesAsync();
                /* }
                 catch (DbUpdateConcurrencyException)
@@ -118,9 +118,9 @@ namespace Book.Controllers
                     }
                 }*/
                 return RedirectToAction("Index");
-            
-            /*return View(category);*/
-        }
+
+               /* return View(category);*/
+            }
 
         // GET:Delete
         [HttpGet]
@@ -157,7 +157,7 @@ namespace Book.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         private bool CategoryExists(int id)

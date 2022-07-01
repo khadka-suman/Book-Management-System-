@@ -23,9 +23,8 @@ public class ApplicationUser : IdentityUser
     [Display(Name = "Last Name")]
     public string lastname { get; set; }
 
-   /* [Required]
-    [Display(Name = "User Name")]
-    public string Username => firstname + " " + lastname;*/
+
+   /* public override string UserName => firstname + " " + lastname;*/
 
     [Required]
     [Display(Name = "Address")]
